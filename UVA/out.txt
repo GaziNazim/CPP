@@ -1,0 +1,60 @@
+Scenario #1
+0 tons
+
+Scenario #2
+0 tons
+
+Scenario #3
+9328 tons
+
+Scenario #4
+6781 tons
+
+Scenario #5
+7892 tons
+
+Scenario #6
+7945 tons
+
+Scenario #7
+6169 tons
+
+Scenario #8
+5958 tons
+
+Scenario #9
+4548 tons
+
+Scenario #10
+5924 tons
+
+Scenario #11
+7327 tons
+
+Scenario #12
+7951 tons
+
+Scenario #13
+3244 tons
+
+Scenario #14
+6976 tons
+
+Scenario #15
+7261 tons
+
+Scenario #16
+8519 tons
+
+Scenario #17
+9308 tons
+
+Scenario #18
+6366 tons
+
+Scenario #19
+9425 tons
+
+Scenario #20
+5340 tons
+
