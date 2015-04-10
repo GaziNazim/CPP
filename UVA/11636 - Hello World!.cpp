@@ -39,11 +39,13 @@ using namespace std;
 
 int main()
 {
-    int a=20;
-    float b=30.4;
-    float c=b+a;
-    cout<<c<<endl;
-    cout<<(6561%645)<<endl;
-     cout<<__gcd(372,164);
+      int n,i,j,t=0;
+    while(scanf("%d",&n)==1&&n>0)
+    {
+        t++;
+        i=ceil(log(n)/log(2));
+        printf("Case %d: %d\n",t,i);
+
+    }
     return 0;
 }

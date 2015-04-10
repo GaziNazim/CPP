@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -39,11 +40,23 @@ using namespace std;
 
 int main()
 {
-    int a=20;
-    float b=30.4;
-    float c=b+a;
-    cout<<c<<endl;
-    cout<<(6561%645)<<endl;
-     cout<<__gcd(372,164);
+
+//fin;
+   set<double>m;
+   int n,a,b,x,y;
+   ri(n);ri(a);ri(b);
+   int c=0;
+   for(int i=0;i<n;i++)
+   {
+       ri(x);ri(y);
+       x-=a;
+       y-=b;
+       if(x==0)
+        c=1;
+        else
+       m.insert((double)y/(double)x);
+   }
+   cout<<(m.sz+c)<<endl;
+
     return 0;
 }

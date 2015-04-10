@@ -39,11 +39,35 @@ using namespace std;
 
 int main()
 {
-    int a=20;
-    float b=30.4;
-    float c=b+a;
-    cout<<c<<endl;
-    cout<<(6561%645)<<endl;
-     cout<<__gcd(372,164);
+    int t,s,d,temp;
+    ri(t);
+    while(t--)
+    {
+        ri(s);ri(d);
+        if(s==0&&d==0)
+            {
+                cout<<"0 0\n";
+        continue;
+            }
+        if(s<d||s==d)
+        {
+            cout<<"impossible\n";
+            continue;
+        }
+        else if(d==0)
+        {
+            cout<<s<<" 0"<<endl;
+            continue;
+        }
+        else
+        temp=(s+d)/2;
+        if(temp*2!=(s+d))
+        {
+
+            cout<<"impossible\n";
+            continue;
+        }
+        cout<<temp<<" "<<(s-temp)<<endl;
+    }
     return 0;
 }

@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -39,11 +40,14 @@ using namespace std;
 
 int main()
 {
-    int a=20;
-    float b=30.4;
-    float c=b+a;
-    cout<<c<<endl;
-    cout<<(6561%645)<<endl;
-     cout<<__gcd(372,164);
+    ll a,b,s;
+    cin>>a>>b>>s;
+    a=abs(a)+abs(b);
+    double r;
+    s-=a;
+    if((s>=0)&&(s%2)==0)
+        cout<<"Yes\n";
+    else
+        cout<<"No\n";
     return 0;
 }

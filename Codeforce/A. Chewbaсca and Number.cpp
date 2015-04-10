@@ -35,15 +35,21 @@ using namespace std;
 /*Code start from here*/
 
 
-
+char a[]={'0','1','2','3','4'};
 
 int main()
 {
-    int a=20;
-    float b=30.4;
-    float c=b+a;
-    cout<<c<<endl;
-    cout<<(6561%645)<<endl;
-     cout<<__gcd(372,164);
+
+    string s;
+    cin>>s;
+    int len=s.sz;
+    if((s[0]-'0'!=9)&&(s[0]-'0'>4))
+        s[0]=a[9-(s[0]-'0')];
+    for(int i=1;i<len;i++)
+    {
+        if(s[i]-'0'>4)
+            s[i]=a[9-(s[i]-'0')];
+    }
+    cout<<s<<endl;
     return 0;
 }
