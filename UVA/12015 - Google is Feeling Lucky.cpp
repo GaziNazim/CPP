@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -29,58 +30,45 @@ using namespace std;
 #define fin freopen("input.txt","r",stdin)
 #define fout freopen("out.txt","w",stdout)
 #define pi acos(-1)
-#define MAX 3010
+#define MAX 15
 ///////////////////////********************////////////////////////
 
 
 /*Code start from here*/
 
-
-struct node
+struct key
 {
-    int w,c;
+    char s[105];
+    int r;
 };
-
-node box[MAX];
-int n;
-int dp[MAX][MAX];
-
-int calc(int i,int c)
+key url[MAX];
+bool comp(key a,key b)
 {
-    if(dp[i][c]!=-1)
-        return dp[i][c];
-
-    if(i==n||c<0)
-    {
-        return 0;
-    }
-
-    if(box[i].w>c)
-    {
-        dp[i][c]=calc(i+1,c);
-    }
-    else
-    {
-        dp[i][c]=max(calc(i+1,c),1+calc(i+1,min(c-box[i].w,box[i].c)));
-    }
-    return dp[i][c];
+    return a.r>b.r;
 }
 
 int main()
 {
-    fin;
-    while(1)
+   // fin;
+    int n;
+    ri(n);
+    for(int l=1;l<=n;l++)
     {
-        ri(n);
-        if(n==0)
-            break;
-        for(int i=0;i<n;i++)
+        for(int i=0;i<10;i++)
         {
-            ri(box[i].w);
-            ri(box[i].c);
+           sc("%s",&url[i].s);
+           ri(url[i].r);
         }
-        mem(dp,-1);
-        pf("%d\n",calc(0,4002));
+         sort(url,url+10,comp);
+    pf("Case #%d:\n",l);
+    int maxi=url[0].r;
+    for(int i=0;i<10;i++)
+        if(maxi==url[i].r)
+    pf("%s\n",url[i].s);
+    else
+    break;
+
     }
+
     return 0;
 }

@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -29,58 +30,33 @@ using namespace std;
 #define fin freopen("input.txt","r",stdin)
 #define fout freopen("out.txt","w",stdout)
 #define pi acos(-1)
-#define MAX 3010
+#define MAX 2000010
 ///////////////////////********************////////////////////////
 
 
 /*Code start from here*/
 
+int people[MAX];
 
-struct node
-{
-    int w,c;
-};
 
-node box[MAX];
-int n;
-int dp[MAX][MAX];
-
-int calc(int i,int c)
-{
-    if(dp[i][c]!=-1)
-        return dp[i][c];
-
-    if(i==n||c<0)
-    {
-        return 0;
-    }
-
-    if(box[i].w>c)
-    {
-        dp[i][c]=calc(i+1,c);
-    }
-    else
-    {
-        dp[i][c]=max(calc(i+1,c),1+calc(i+1,min(c-box[i].w,box[i].c)));
-    }
-    return dp[i][c];
-}
 
 int main()
 {
     fin;
-    while(1)
+    int n;
+    while(ri(n))
     {
-        ri(n);
         if(n==0)
             break;
         for(int i=0;i<n;i++)
+            ri(people[i]);
+        sort(people,people+n);
+        pf("%d",people[0]);
+        for(int i=1;i<n;i++)
         {
-            ri(box[i].w);
-            ri(box[i].c);
+            pf(" %d",people[i]);
         }
-        mem(dp,-1);
-        pf("%d\n",calc(0,4002));
+        NL;
     }
     return 0;
 }

@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -29,58 +30,51 @@ using namespace std;
 #define fin freopen("input.txt","r",stdin)
 #define fout freopen("out.txt","w",stdout)
 #define pi acos(-1)
-#define MAX 3010
+#define MAX 40
 ///////////////////////********************////////////////////////
 
 
 /*Code start from here*/
-
-
-struct node
+int dp[MAX][4];
+struct data
 {
-    int w,c;
+    int x,y,z;
 };
-
-node box[MAX];
-int n;
-int dp[MAX][MAX];
-
-int calc(int i,int c)
+int LCS(int b,int w, int h)
 {
-    if(dp[i][c]!=-1)
-        return dp[i][c];
-
-    if(i==n||c<0)
+    for(int i=0;i<n;i++)
     {
-        return 0;
+        if(dp[i][1]!=-1)
+        {
+            if(d[i].x)
+        }
     }
-
-    if(box[i].w>c)
-    {
-        dp[i][c]=calc(i+1,c);
-    }
-    else
-    {
-        dp[i][c]=max(calc(i+1,c),1+calc(i+1,min(c-box[i].w,box[i].c)));
-    }
-    return dp[i][c];
 }
 
 int main()
 {
-    fin;
-    while(1)
+    data d[MAX];
+    int mh,n,l=0;
+    while(ri(n)==1)
     {
-        ri(n);
-        if(n==0)
+        mim(dp,-1);
+        mh=0;
+        if(!n)
             break;
         for(int i=0;i<n;i++)
         {
-            ri(box[i].w);
-            ri(box[i].c);
+            ri(d[i].x);
+            ri(d[i].y);
+            ri(d[i].z);
         }
-        mem(dp,-1);
-        pf("%d\n",calc(0,4002));
+
+        for(int i=0;i<n;i++)
+        {
+            int ans1=LCS(d[i].x,d[i].y,d[i].z);
+            int ans1=LCS(d[i].x,d[i].y,d[i].z);
+            int ans1=LCS(d[i].x,d[i].y,d[i].z);
+            mh=max(mh,max(ans1,max(ans2,ans3)));
+        }
     }
     return 0;
 }

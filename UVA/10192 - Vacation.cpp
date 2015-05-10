@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -6,7 +7,7 @@
 using namespace std;
 #define rep(i,n) for(__typeof(n) i=0;i<(n);i++)
 #define REP(i,a,b) for(__typeof(b) i=(a);i<=(b);i++)
-#define INF (1<<30)
+#define INF (1<<31)
 #define pb push_back
 #define Sort(v) sort(v.begin(),v.end())
 #define sz size()
@@ -29,58 +30,49 @@ using namespace std;
 #define fin freopen("input.txt","r",stdin)
 #define fout freopen("out.txt","w",stdout)
 #define pi acos(-1)
-#define MAX 3010
+#define MAX 110
 ///////////////////////********************////////////////////////
 
 
 /*Code start from here*/
-
-
-struct node
-{
-    int w,c;
-};
-
-node box[MAX];
-int n;
 int dp[MAX][MAX];
-
-int calc(int i,int c)
+string s1 , s2;
+set<char>city;
+int len1,len2;
+int LCS(int i,int j)
 {
-    if(dp[i][c]!=-1)
-        return dp[i][c];
 
-    if(i==n||c<0)
-    {
+    if(i==len1||j==len2)
         return 0;
-    }
-
-    if(box[i].w>c)
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+    if(s1[i]==s2[j])
     {
-        dp[i][c]=calc(i+1,c);
+        return dp[i][j]=(1+LCS(i+1,j+1));
     }
     else
     {
-        dp[i][c]=max(calc(i+1,c),1+calc(i+1,min(c-box[i].w,box[i].c)));
+        return dp[i][j]=max(LCS(i+1,j),LCS(i,j+1));
     }
-    return dp[i][c];
+
 }
 
 int main()
 {
-    fin;
+
+    int i=1;
     while(1)
     {
-        ri(n);
-        if(n==0)
+        getline(cin,s1);
+        if(s1[0]=='#')
             break;
-        for(int i=0;i<n;i++)
-        {
-            ri(box[i].w);
-            ri(box[i].c);
-        }
+        getline(cin,s2);
+        len1=s1.sz;
+        len2=s2.sz;
+       // cout<<"len 1"<<len1<<"len2 "<<len2<<endl;
         mem(dp,-1);
-        pf("%d\n",calc(0,4002));
+        pf("Case #%d: you can visit at most %d cities.\n",i,LCS(0,0));
+        i++;
     }
     return 0;
 }

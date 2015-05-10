@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -29,58 +30,42 @@ using namespace std;
 #define fin freopen("input.txt","r",stdin)
 #define fout freopen("out.txt","w",stdout)
 #define pi acos(-1)
-#define MAX 3010
+#define MAX 800
 ///////////////////////********************////////////////////////
 
 
 /*Code start from here*/
 
 
-struct node
-{
-    int w,c;
-};
-
-node box[MAX];
-int n;
-int dp[MAX][MAX];
-
-int calc(int i,int c)
-{
-    if(dp[i][c]!=-1)
-        return dp[i][c];
-
-    if(i==n||c<0)
-    {
-        return 0;
-    }
-
-    if(box[i].w>c)
-    {
-        dp[i][c]=calc(i+1,c);
-    }
-    else
-    {
-        dp[i][c]=max(calc(i+1,c),1+calc(i+1,min(c-box[i].w,box[i].c)));
-    }
-    return dp[i][c];
-}
+double A[MAX],F[MAX];
 
 int main()
 {
     fin;
-    while(1)
+    //fout;
+    int n;
+   double MAD,MAPE,MSE,RMSE;
+    for(int i=0;i<365;i++)
+        cin>>A[i];
+       // pf("%f\n",A[2]);
+    cin>>n;
+    //cout<<n;
+    for(int i=0;i<365;i++)
+        cin>>F[i];
+        cin>>n;
+        //cout<<n;
+        MAD=0;MAPE=0;MSE=0;
+    for(int i=0;i<365;i++)
     {
-        ri(n);
-        if(n==0)
-            break;
-        for(int i=0;i<n;i++)
-        {
-            ri(box[i].w);
-            ri(box[i].c);
-        }
-        mem(dp,-1);
-        pf("%d\n",calc(0,4002));
+        MAD+=(double)(abs(A[i]-F[i]))/365;
+        MAPE+=(double)(abs(A[i]-F[i]))/A[i];
+        MSE+=pow((double)(abs(A[i]-F[i])),2)/365;
     }
+    NL;
+    printf("MAD: %f\n",MAD);
+    printf("MAPE: %f\n",100*MAPE/365);
+    printf("MSE: %f\n",MSE);
+    printf("RMSE: %f\n",sqrt(MSE));
+
     return 0;
 }

@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
@@ -6,7 +7,7 @@
 using namespace std;
 #define rep(i,n) for(__typeof(n) i=0;i<(n);i++)
 #define REP(i,a,b) for(__typeof(b) i=(a);i<=(b);i++)
-#define INF (1<<30)
+#define INF (1<<31)
 #define pb push_back
 #define Sort(v) sort(v.begin(),v.end())
 #define sz size()
@@ -29,58 +30,49 @@ using namespace std;
 #define fin freopen("input.txt","r",stdin)
 #define fout freopen("out.txt","w",stdout)
 #define pi acos(-1)
-#define MAX 3010
+#define MAX 150
 ///////////////////////********************////////////////////////
 
 
 /*Code start from here*/
 
 
-struct node
-{
-    int w,c;
-};
-
-node box[MAX];
-int n;
+int tower1[MAX],tower2[MAX];
+int len1,len2;
 int dp[MAX][MAX];
-
-int calc(int i,int c)
+int LCS(int i,int j)
 {
-    if(dp[i][c]!=-1)
-        return dp[i][c];
-
-    if(i==n||c<0)
+    if(i==len1||j==len2)
     {
         return 0;
     }
-
-    if(box[i].w>c)
+    if(dp[i][j]!=-1)
+        return dp[i][j];
+    if(tower1[i]==tower2[j])
     {
-        dp[i][c]=calc(i+1,c);
+        return dp[i][j]=1+LCS(i+1,j+1);
     }
-    else
-    {
-        dp[i][c]=max(calc(i+1,c),1+calc(i+1,min(c-box[i].w,box[i].c)));
-    }
-    return dp[i][c];
+    return dp[i][j]=max(LCS(i+1,j),LCS(i,j+1));
 }
 
 int main()
 {
-    fin;
+    //fin;
+    int t=1;
     while(1)
     {
-        ri(n);
-        if(n==0)
+        ri(len1);
+        ri(len2);
+        if(len1==0&&len2==0)
             break;
-        for(int i=0;i<n;i++)
-        {
-            ri(box[i].w);
-            ri(box[i].c);
-        }
-        mem(dp,-1);
-        pf("%d\n",calc(0,4002));
+            for(int i=0;i<len1;i++)
+                ri(tower1[i]);
+            for(int i=0;i<len2;i++)
+                ri(tower2[i]);
+            mem(dp,-1);
+        pf("Twin Towers #%d\n",t);
+        pf("Number of Tiles : %d\n\n",LCS(0,0));
+        t++;
     }
     return 0;
 }
